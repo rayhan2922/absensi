@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Absensi Digital - MI Muhammadiyah Banaran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
         .fade-in { animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -14,31 +15,30 @@
         @media print {
             .no-print { display: none !important; }
             body { background: white !important; }
+            table { width: 100%; border-collapse: collapse; }
+            th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+            .report-summary { display: flex; justify-content: space-around; margin-bottom: 20px; }
+            .report-summary > div { flex: 1; text-align: center; padding: 10px; border: 1px solid #eee; margin: 0 5px; }
         }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-    <!-- Login Page -->
     <div id="loginPage" class="min-h-screen flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md fade-in">
             <div class="text-center mb-8">
-                <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.84L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.84l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
-                    </svg>
-                </div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xlLUFuZHJvaWRQcm9qZWN0LUNvbXBhbmlvbg/s1600/logo_mi_muhammadiyah.png" alt="Logo MI Muhammadiyah Banaran" class="w-24 h-24 mx-auto mb-4 object-contain">
                 <h1 class="text-2xl font-bold text-gray-800 mb-2">MI Muhammadiyah Banaran</h1>
                 <p class="text-gray-600">Sistem Absensi Digital Kelas 5A</p>
             </div>
             
             <form id="loginForm" class="space-y-6">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-2">Username</label>
                     <input type="text" id="username" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan username">
                 </div>
                 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
                     <input type="password" id="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan password">
                 </div>
                 
@@ -53,18 +53,12 @@
         </div>
     </div>
 
-    <!-- Main App -->
     <div id="mainApp" class="hidden">
-        <!-- Navigation -->
         <nav class="bg-white shadow-lg no-print">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-between items-center py-4">
                     <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.84L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.84l-7-3z"/>
-                            </svg>
-                        </div>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xlLUFuZHJvaWRQcm9qZWN0LUNvbXBhbmlvbg/s1600/logo_mi_muhammadiyah.png" alt="Logo MI Muhammadiyah Banaran" class="w-12 h-12 object-contain">
                         <div>
                             <h1 class="text-xl font-bold text-gray-800">MI Muhammadiyah Banaran</h1>
                             <p class="text-sm text-gray-600">Kelas 5A</p>
@@ -86,9 +80,7 @@
             </div>
         </nav>
 
-        <!-- Attendance Page -->
         <div id="attendancePage" class="max-w-7xl mx-auto p-6">
-            <!-- Header Info -->
             <div class="bg-white rounded-xl shadow-lg p-6 mb-6 fade-in">
                 <div class="flex justify-between items-center mb-4">
                     <div>
@@ -103,8 +95,7 @@
                 
                 <div class="flex flex-wrap gap-4 items-center">
                     <select id="attendanceDate" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                        <option value="">Pilih Tanggal</option>
-                    </select>
+                        </select>
                     
                     <button id="markAllPresent" class="px-6 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition duration-200">
                         Hadir Semua
@@ -116,29 +107,24 @@
                 </div>
             </div>
 
-            <!-- Students Grid -->
             <div id="studentsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                <!-- Students will be loaded here -->
-            </div>
+                </div>
         </div>
 
-        <!-- Report Page -->
         <div id="reportPage" class="hidden max-w-7xl mx-auto p-6">
             <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold text-gray-800">Laporan Kehadiran</h2>
                     <div class="flex gap-4 no-print">
                         <select id="reportMonth" class="px-4 py-2 border border-gray-300 rounded-lg">
-                            <option value="">Pilih Bulan</option>
-                        </select>
+                            </select>
                         <button id="printReport" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700">
                             Cetak Laporan
                         </button>
                     </div>
                 </div>
 
-                <!-- Summary Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 report-summary">
                     <div class="bg-green-50 p-4 rounded-lg text-center">
                         <div class="text-2xl font-bold text-green-600" id="totalPresent">0</div>
                         <div class="text-sm text-gray-600">Total Hadir</div>
@@ -157,7 +143,6 @@
                     </div>
                 </div>
 
-                <!-- Report Table -->
                 <div class="overflow-x-auto">
                     <table class="w-full border-collapse border border-gray-300">
                         <thead>
@@ -173,8 +158,7 @@
                             </tr>
                         </thead>
                         <tbody id="reportTableBody">
-                            <!-- Report data will be loaded here -->
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>
@@ -267,11 +251,20 @@
         }
 
         async function loadStudents() {
+            const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTqNbRrZPouCMKKp1xRSeTcba01mU92ipWqSM3WX0-b8at571vfwNJ1Kw-eE_a-16iYBUYfDmudVR-S/pub?output=csv';
+            
             try {
-                // Sample student data (since we can't access external CSV in this environment)
+                const response = await fetch(csvUrl);
+                const csvText = await response.text();
+                students = parseCSV(csvText);
+                renderStudents();
+            } catch (error) {
+                console.error('Error loading students from CSV:', error);
+                alert('Gagal memuat data siswa dari Google Sheet. Menggunakan data contoh.');
+                // Fallback to sample data if fetching fails
                 students = [
                     { nama: "ABISAM NADIF FERDIAN", nisn: "0152047413" },
-                    { nama: "Aditya Varel Putra Pratama ", nisn: "0143840761" },
+                    { nama: "Aditya Varel Putra Pratama", nisn: "0143840761" },
                     { nama: "Afifah Selviana Az-Zahra", nisn: "0137837551" },
                     { nama: "Afika Aulia Mustofa", nisn: "3151567971" },
                     { nama: "Ahmad Alhadromi", nisn: "0153767787" },
@@ -289,16 +282,28 @@
                     { nama: "Mizzita Indah Prameswari", nisn: "0144744105" },
                     { nama: "Muhammad Fatkhah", nisn: "0149422001" },
                     { nama: "Nayla Shifa Nanthania", nisn: "3153216317" },
-                    { nama: "Shofiah Shikari Laila", nisn: "0155819920" }
-                    { nama: "Wahyu Ari Nugroho", nisn: "3150614367" }
+                    { nama: "Shofiah Shikari Laila", nisn: "0155819920" },
+                    { nama: "Wahyu Ari Nugroho", nisn: "3150614367" },
                     { nama: "Wahyu Krishna Utama", nisn: "3151948816" }
                 ];
-                
                 renderStudents();
-            } catch (error) {
-                console.error('Error loading students:', error);
-                alert('Gagal memuat data siswa. Menggunakan data contoh.');
             }
+        }
+
+        function parseCSV(csvText) {
+            const lines = csvText.split('\n').filter(line => line.trim() !== ''); // Filter out empty lines
+            const result = [];
+            // Skip header row if your CSV has one. Assuming first column is Nama and second is NISN.
+            for (let i = 1; i < lines.length; i++) { // Start from 1 to skip header
+                const parts = lines[i].split(',');
+                if (parts.length >= 2) {
+                    result.push({
+                        nama: parts[0].trim(),
+                        nisn: parts[1].trim()
+                    });
+                }
+            }
+            return result;
         }
 
         function renderStudents() {
@@ -308,13 +313,13 @@
             grid.innerHTML = students.map((student, index) => {
                 const currentStatus = getStudentAttendance(student.nisn, selectedDate);
                 return `
-                    <div class="bg-white rounded-lg shadow-md p-4 fade-in" style="animation-delay: ${index * 0.1}s">
+                    <div class="bg-white rounded-lg shadow-md p-4 fade-in" style="animation-delay: ${index * 0.05}s">
                         <div class="flex items-center space-x-3 mb-3">
                             <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                                <span class="text-blue-600 font-semibold">${student.nama.charAt(0)}</span>
+                                <span class="text-blue-600 font-semibold text-xl">${student.nama.charAt(0)}</span>
                             </div>
                             <div class="flex-1">
-                                <h3 class="font-semibold text-gray-800 text-sm">${student.nama}</h3>
+                                <h3 class="font-semibold text-gray-800 text-base">${student.nama}</h3>
                                 <p class="text-xs text-gray-600">NISN: ${student.nisn}</p>
                             </div>
                         </div>
@@ -350,7 +355,7 @@
             }
             
             attendanceData[selectedDate][nisn] = status;
-            renderStudents();
+            renderStudents(); // Re-render to update button styles
         }
 
         function getStudentAttendance(nisn, date) {
@@ -368,7 +373,8 @@
                 attendanceData[selectedDate][student.nisn] = 'hadir';
             });
             
-            renderStudents();
+            renderStudents(); // Re-render to update button styles
+            saveAttendance(); // Automatically save after marking all present
         }
 
         function saveAttendance() {
@@ -406,6 +412,9 @@
             const select = document.getElementById('attendanceDate');
             const today = new Date();
             
+            // Clear existing options
+            select.innerHTML = '';
+            
             // Add today and previous 30 days
             for (let i = 0; i < 31; i++) {
                 const date = new Date(today);
@@ -432,6 +441,9 @@
                 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
             ];
             
+            // Clear existing options
+            select.innerHTML = '';
+
             // Add current and previous 11 months
             for (let i = 0; i < 12; i++) {
                 const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
@@ -468,8 +480,19 @@
                     }
                 });
                 
-                const total = present + sick + permit + absent;
-                const percentage = total > 0 ? ((present / total) * 100).toFixed(1) : '0.0';
+                // Calculate total days in the selected month that have attendance data
+                // This is a more accurate way to get 'total days recorded' for percentage calculation
+                const datesInMonthWithAttendance = new Set();
+                Object.keys(attendanceData).forEach(date => {
+                    if (date.startsWith(selectedMonth)) {
+                        if (attendanceData[date][student.nisn]) { // Only count if this student has an entry for this day
+                           datesInMonthWithAttendance.add(date);
+                        }
+                    }
+                });
+                const totalRecordedDays = datesInMonthWithAttendance.size;
+
+                const percentage = totalRecordedDays > 0 ? ((present / totalRecordedDays) * 100).toFixed(1) : '0.0';
                 
                 reportData.push({
                     nama: student.nama,
@@ -513,5 +536,5 @@
             window.print();
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96435198a5ccff7e',t:'MTc1MzM1OTA3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
